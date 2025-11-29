@@ -76,7 +76,21 @@
   cursor: pointer;
 }
 .show-products{
+  
   display: grid;
+  border:1px solid green;
+  margin:10px;
+  grid-template-columns: repeat(3,1fr);
+ box-sizing: border-box;
+}
+.card{
+  border:1px solid red;
+  width:100%;
+  /* box-sizing: border-box; */
+}
+.card>img{
+  box-sizing: border-box;
+  width:100%;
 }
 
 
