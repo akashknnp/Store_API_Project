@@ -7,15 +7,18 @@ async function all(){
     
     showProduct.innerHTML=jsonRes.map(e=>`
         <div class="card">
-            <img src=${e.image}>
-            <h5>${e.title.slice(0,12).concat("...")}<h5>
-        
-        
-        
+            <div><img src=${e.image}></div>
+            <br>
+            <h3>${e.title.slice(0,12).concat("...")}</h3>
+            <br>
+            <p>${e.description.slice(0,90).concat("...")}</p><br>
+            <h4>${'$ '+ e.price}</h4><br>
+            <div class="buttons">
+                <button>Details</button>
+                <button onclick="callme()">Add to Cart</button>
+            </div>
         </div>
-        
         `).join("")
-    
 }
 all()
 
@@ -30,13 +33,12 @@ async function FilterMen(){
      showProduct.innerHTML=MenCategory.map(e=>`
         <div class="card">
             <img src=${e.image}>
-            <h5>${e.title.slice(0,12).concat("...")}<h5>
+            <h4>${e.title.slice(0,12).concat("...")}<h4>
 
         </div>
         
         `).join("")
-            
-        
-    
 }
  
+
+
