@@ -44,8 +44,29 @@
       <h1>Cart</h1>
     </div>
 
-    <div class="cart-items">
-      <p>No Items Added Yet...</p>
+    <div class="cart-parent">
+      <div class="cart-items">
+        <p>No Items Added Yet...</p>
+      </div>
+      <div class="cart-summary">
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div>
+            <p>Products (<span id="total-items">0</span>)</p>
+            <span id="product-total">$0</span>
+          </div>
+          <div>
+            <p>Shipping</p>
+            <span id="shipping">$30</span>
+          </div>
+          <div>
+            <p><b>Total amount</b></p>
+            <b><span id="grand-total">$0</span></b>
+          </div>
+
+          <button class="checkout-btn">Go to checkout</button>
+        </div>
+      </div>
     </div>
 
     <script src="./Cart.js"></script>

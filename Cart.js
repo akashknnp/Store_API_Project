@@ -29,28 +29,27 @@ document.querySelector(".cart-items").innerHTML = CartItems.map((e, index) => `
     </div>
 `).join("");
 
+
 function increase(i) {
     qty[i]++;
     document.getElementById(`count-${i}`).innerText = qty[i];
     document.getElementById(`total-${i}`).innerText =
         `${qty[i]} X ${CartItems[i].price} = ${qty[i] * CartItems[i].price}`;
     saveCart();
+    updateSummary();
 }
 
 function decrease(i) {
     if (qty[i] > 1) {
         qty[i]--;
-        document.getElementById(`count-${i}`).innerText = qty[i];
-        document.getElementById(`total-${i}`).innerText =
-            `${qty[i]} X ${CartItems[i].price} = ${qty[i] * CartItems[i].price}`;
     } else {
         CartItems.splice(i, 1);
         qty.splice(i, 1);
-        displayCart();
     }
     saveCart();
+    displayCart();
+    updateSummary();
 }
-
 
 
 function displayCart() {
@@ -60,24 +59,43 @@ function displayCart() {
     CartItems.forEach((item, index) => {
         cartDiv.innerHTML += `
             <div class="items">
-            <div><img src="${item.image}"></div>
-            <div>
-                <h5>${item.title}</h5>
-                <p>${item.description.slice(0,90).concat(". . .")}</p>
-
-            </div>
-            <div>
-                <button onclick="decrease(${index})">-</button>
-                <span id="count-${index}">${qty[index]}</span>
-                <button onclick="increase(${index})">+</button>
-                <p id="total-${index}">${qty[index]} X ${item.price} = <b>${qty[index] * item.price}</b></p>
-            </div>
+                <div><img src="${item.image}"></div>
+                <div>
+                    <h5>${item.title}</h5>
+                    <p>${item.description.slice(0, 90)}...</p>
+                </div>
+                <div>
+                    <button onclick="decrease(${index})">-</button>
+                    <span id="count-${index}">${qty[index]}</span>
+                    <button onclick="increase(${index})">+</button>
+                    <p id="total-${index}">${qty[index]} X ${item.price} = <b>${qty[index] * item.price}</b></p>
+                </div>
             </div>
         `;
     });
 
-    if(CartItems.length === 0){
+    if (CartItems.length === 0) {
         cartDiv.innerHTML = "<p>Your cart is empty</p>";
     }
+
+    updateSummary();
 }
+
+
+function updateSummary() {
+    let totalItems = qty.reduce((a, b) => a + b, 0);
+    let productTotal = CartItems.reduce((sum, item, index) =>
+        sum + item.price * qty[index], 0);
+
+    let shipping = CartItems.length > 0 ? 30 : 0;
+    let grandTotal = productTotal + shipping;
+
+    document.getElementById("total-items").innerText = totalItems;
+    document.getElementById("product-total").innerText = "$" + productTotal.toFixed(2);
+    document.getElementById("shipping").innerText = "$" + shipping;
+    document.getElementById("grand-total").innerText = "$" + grandTotal.toFixed(2);
+}
+
 displayCart();
+updateSummary();
+
