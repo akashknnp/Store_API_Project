@@ -13,7 +13,7 @@ function saveCart() {
 
 
 document.querySelector(".cart-items").innerHTML = CartItems.map((e, index) => `
-    <div>
+    <div class="items">
         <img src="${e.image}">
         <h4>${e.title}</h4>
 
@@ -59,13 +59,19 @@ function displayCart() {
 
     CartItems.forEach((item, index) => {
         cartDiv.innerHTML += `
-            <div class="cart-item">
-                <img src="${item.image}">
-                <p>${item.title}</p>
+            <div class="items">
+            <div><img src="${item.image}"></div>
+            <div>
+                <h5>${item.title}</h5>
+                <p>${item.description.slice(0,90).concat(". . .")}</p>
+
+            </div>
+            <div>
                 <button onclick="decrease(${index})">-</button>
                 <span id="count-${index}">${qty[index]}</span>
                 <button onclick="increase(${index})">+</button>
-                <p id="total-${index}">${qty[index]} X ${item.price} = ${qty[index] * item.price}</p>
+                <p id="total-${index}">${qty[index]} X ${item.price} = <b>${qty[index] * item.price}</b></p>
+            </div>
             </div>
         `;
     });
