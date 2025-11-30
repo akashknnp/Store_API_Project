@@ -1,8 +1,10 @@
 let showProduct = document.querySelector(".show-products");
 
+let jsonRes=[]
+
 async function all(){
     const res=await fetch("https://fakestoreapi.com/products")
-    const jsonRes= await res.json()
+     jsonRes= await res.json()
     console.log(jsonRes);
     
     showProduct.innerHTML=jsonRes.map(e=>`
@@ -15,12 +17,26 @@ async function all(){
             <h4>${'$ '+ e.price}</h4><br>
             <div class="buttons">
                 <button>Details</button>
-                <button onclick="callme()">Add to Cart</button>
+                <button onclick="addToCart(${e.id})">Add to Cart</button>
             </div>
         </div>
         `).join("")
 }
 all()
+
+
+function addToCart(id){
+    let cartProduct=jsonRes.find(e=>e.id===id);
+    console.log(cartProduct);
+
+    let cart = JSON.parse(localStorage.getItem("cart"))|| [];
+
+    cart.push(cartProduct);
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    console.log(cart);
+}
 
 // -------------------------------filter by category-----------
 
