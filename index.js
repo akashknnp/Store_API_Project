@@ -38,23 +38,105 @@ function addToCart(id){
     console.log(cart);
 }
 
-// -------------------------------filter by category-----------
+// -------------------------------filter by category-------------------------------
 
 async function FilterMen(){
     const res=await fetch("https://fakestoreapi.com/products");
     const Jsonres=await res.json();
     console.log(Jsonres);
     const MenCategory=Jsonres.filter((e)=>e.category=="men's clothing");
-    
-     showProduct.innerHTML=MenCategory.map(e=>`
+    showProduct.innerHTML=MenCategory.map(e=>`
         <div class="card">
-            <img src=${e.image}>
-            <h4>${e.title.slice(0,12).concat("...")}<h4>
-
+            <div><img src=${e.image}></div>
+            <br>
+            <h3>${e.title.slice(0,12).concat("...")}</h3>
+            <br>
+            <p>${e.description.slice(0,90).concat("...")}</p><br>
+            <h4>${'$ '+ e.price}</h4><br>
+            <div class="buttons">
+                <button>Details</button>
+                <button onclick="addToCart(${e.id})">Add to Cart</button>
+            </div>
         </div>
-        
         `).join("")
 }
  
+// -------------------------------------Filter by all-------------------------------------
+
+function FilterAll(){
+    showProduct.innerHTML=jsonRes.map(e=>`
+        <div class="card">
+            <div><img src=${e.image}></div>
+            <br>
+            <h3>${e.title.slice(0,12).concat("...")}</h3>
+            <br>
+            <p>${e.description.slice(0,90).concat("...")}</p><br>
+            <h4>${'$ '+ e.price}</h4><br>
+            <div class="buttons">
+                <button>Details</button>
+                <button onclick="addToCart(${e.id})">Add to Cart</button>
+            </div>
+        </div>
+        `).join("")
+}
+
+// -------------------------------------Filter by Women-----------------------------------------
 
 
+function FilterWomen(){
+     const WomenCategory=jsonRes.filter((e)=>e.category=="women's clothing");
+      showProduct.innerHTML=WomenCategory.map(e=>`
+        <div class="card">
+            <div><img src=${e.image}></div>
+            <br>
+            <h3>${e.title.slice(0,12).concat("...")}</h3>
+            <br>
+            <p>${e.description.slice(0,90).concat("...")}</p><br>
+            <h4>${'$ '+ e.price}</h4><br>
+            <div class="buttons">
+                <button>Details</button>
+                <button onclick="addToCart(${e.id})">Add to Cart</button>
+            </div>
+        </div>
+        `).join("")
+}
+
+
+// -----------------------------------------Filter by Jewelry-------------------------------------------
+function FilterJewelry(){
+    const Jewelry=jsonRes.filter((e)=>e.category=="jewelery");
+      showProduct.innerHTML=Jewelry.map(e=>`
+        <div class="card">
+            <div><img src=${e.image}></div>
+            <br>
+            <h3>${e.title.slice(0,12).concat("...")}</h3>
+            <br>
+            <p>${e.description.slice(0,90).concat("...")}</p><br>
+            <h4>${'$ '+ e.price}</h4><br>
+            <div class="buttons">
+                <button>Details</button>
+                <button onclick="addToCart(${e.id})">Add to Cart</button>
+            </div>
+        </div>
+        `).join("")
+}
+
+// -------------------------------------------Filter by Electronics------------------------------------------
+
+function FilterElectronics(){
+    const ele=jsonRes.filter((e)=>e.category=="electronics");
+      showProduct.innerHTML=ele.map(e=>`
+        <div class="card">
+            <div><img src=${e.image}></div>
+            <br>
+            <h3>${e.title.slice(0,12).concat("...")}</h3>
+            <br>
+            <p>${e.description.slice(0,90).concat("...")}</p><br>
+            <h4>${'$ '+ e.price}</h4><br>
+            <div class="buttons">
+                <button>Details</button>
+                <button onclick="addToCart(${e.id})">Add to Cart</button>
+            </div>
+        </div>
+        `).join("")
+}
