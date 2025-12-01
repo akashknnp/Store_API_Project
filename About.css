@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.navigation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #faf2f2;
+  border-bottom: 1px solid #e9e1e1;
+  position:sticky;
+  top:0;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: black;
+  margin: 0 10px;
+  font-size: 16px;
+}
+.nav-icons a i {
+  margin-right: 6px;
+}
+
+.nav-logo h4{
+  font-size: xx-large;
+}
+.nav-icons a span {
+  display: inline;
+}
+.nav-icons a{
+  border:1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.info{
+  padding: 10px;
+  margin:10px;
+  text-align:center
+}
+.info>h2,.info>p{
+  padding: 20px;
+  border-bottom: 1px solid rgb(228, 219, 219);
+}
+.products h2{
+  text-align: center;
+}
+.products>div:nth-child(2){
+  display: flex;
+  box-sizing: border-box;
+  width:100%;
+  justify-content: space-evenly;
+  padding: 10px;
+  margin-top:20px;
+}
+.products>div:nth-child(2)>div{
+  width:20%;
+  text-align: center;
+  font-weight: 500;
+  border:2px solid rgb(228, 218, 218);
+  border-radius: 5px;
+  align-content: center;
+}
+.products>div:nth-child(2)>div>img{
+  width:100%;
+}
+
+.footer{
+  background-color: black;
+  color:white;
+  text-align: center;
+  padding: 30px 10px;
+  margin-top:30px;
+}
+
+@media (max-width: 768px) {
+
+
+  .navigation {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px 15px;
+    
+  }
+
+  .navigation > div:nth-child(1),
+  .navigation > div:nth-child(3) {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin:5px
+    
+  }
+
+  .navigation > div:nth-child(2) {
+    order: 3; /* Move to second line */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+  }
+
+  .navigation>div:nth-child(1){
+    width:100%;
+    font-size: x-large;
+    border-bottom:1px solid #eee;
+   
+  }
+  .nav-logo>h4{
+    text-align: center;
+    width: 100%;
+    letter-spacing: 5px;
+    
+  }
+
+  .nav-icons a {
+    margin: 0 5px;
+  }
+  .products>div:nth-child(2){
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+  }
+  .products>div:nth-child(2)>div{
+  width:80%;
+  margin:5px;
+  margin-bottom: 15px;
+  }
+}
