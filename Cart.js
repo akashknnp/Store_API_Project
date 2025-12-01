@@ -75,9 +75,15 @@ function displayCart() {
     });
 
     if (CartItems.length === 0) {
-        cartDiv.innerHTML = "<p>Your cart is empty</p>";
-    }
-
+    cartDiv.innerHTML = `
+        <div style="text-align:center;">
+        <p>Your cart is empty</p>
+        <a href="index.html" style="color: white;background-color:black;border-radius:5px; text-decoration: none;border:1px solid black;padding:5px;margin-top:10px;">
+            Continue Shopping
+        </a>
+        </div>
+    `;
+}
     updateSummary();
 }
 
@@ -90,6 +96,7 @@ function updateSummary() {
     let shipping = CartItems.length > 0 ? 30 : 0;
     let grandTotal = productTotal + shipping;
 
+    
     document.getElementById("total-items").innerText = totalItems;
     document.getElementById("product-total").innerText = "$" + productTotal.toFixed(2);
     document.getElementById("shipping").innerText = "$" + shipping;

@@ -25,17 +25,29 @@ async function all(){
 all()
 
 
-function addToCart(id){
-    let cartProduct=jsonRes.find(e=>e.id===id);
-    console.log(cartProduct);
+function addToCart(id) {
+    let cartProduct = jsonRes.find(e => e.id === id);
 
-    let cart = JSON.parse(localStorage.getItem("cart"))|| [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let qty = JSON.parse(localStorage.getItem("qty")) || [];
 
-    cart.push(cartProduct);
+    // check if item exists in cart
+    let index = cart.findIndex(item => item.id === id);
 
-    localStorage.setItem("cart",JSON.stringify(cart));
+    if (index !== -1) {
+        // already exists → increase qty only
+        qty[index]++;
+    } else {
+        // new product → add to cart
+        cart.push(cartProduct);
+        qty.push(1);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("qty", JSON.stringify(qty));
 
     console.log(cart);
+    console.log(qty);
 }
 
 // -------------------------------filter by category-------------------------------
