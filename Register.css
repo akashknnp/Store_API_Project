@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.navigation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #faf2f2;
+  border-bottom: 1px solid #e9e1e1;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: black;
+  margin: 0 10px;
+  font-size: 16px;
+}
+.nav-icons a i {
+  margin-right: 6px;
+}
+
+.nav-logo h4 {
+  font-size: xx-large;
+}
+.nav-icons a span {
+  display: inline;
+}
+.nav-icons a {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.container {
+  position: relative;
+  top: 10px;
+  left: 38%;
+  background: white;
+  width: 350px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  background: #000702;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #282929;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 30px 10px;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px 15px;
+  }
+
+  .navigation > div:nth-child(1),
+  .navigation > div:nth-child(3) {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px;
+  }
+
+  .navigation > div:nth-child(2) {
+    order: 3; /* Move to second line */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+  }
+
+  .navigation > div:nth-child(1) {
+    width: 100%;
+    font-size: x-large;
+    border-bottom: 1px solid #eee;
+  }
+  .nav-logo > h4 {
+    text-align: center;
+    width: 100%;
+    letter-spacing: 5px;
+  }
+
+  .nav-icons a {
+    margin: 0 5px;
+  }
+  .container {
+    left: 15%;
+  }
+}
