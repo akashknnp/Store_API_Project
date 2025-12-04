@@ -161,6 +161,7 @@
   }
   .cart-items {
     width: 100%;
+    margin-top: 30px;
   }
   .items > div:nth-child(2) {
     width: 40%;
